@@ -1,0 +1,26 @@
+Alex Johnson
+Data Analyst | Business Intelligence Specialist
+Email: alex.johnson@example.com | Phone: (555) 123-4567
+
+OBJECTIVE
+Motivated Data Analyst with 2+ years of experience transforming complex datasets into actionable business insights.
+
+SKILLS
+- Programming: Python, SQL, R
+- Data Analysis & Tools: Pandas, NumPy, Excel, Power BI, Tableau
+- Databases: PostgreSQL, MySQL
+- Methodologies: Statistics, Data Visualization, ETL pipelines
+
+WORK EXPERIENCE
+Data Analyst Intern | Insights Corp (2023 - Present)
+- Extracted and cleaned data using Python and Pandas for 15+ marketing campaigns.
+- Designed interactive Power BI dashboards to track KPIs, improving reporting efficiency by 30%.
+- Queried PostgreSQL databases to write complex SQL joins and aggregations.
+
+PROJECTS
+Sales Performance Analytics Dashboard
+- Built a Power BI interactive report consuming sales data from Excel and SQL.
+- Applied statistical forecasting to predict quarterly sales with 88% accuracy.
+
+EDUCATION
+B.S. in Statistics and Computer Science | State University (2023)

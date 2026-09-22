@@ -1,0 +1,4 @@
+Test Resume,Expected Top Role,Actual Top Role,Evaluation Criteria,Status
+Resume A (Alex Johnson),Data Analyst,Data Analyst,Contains Python SQL Excel Pandas Power BI Tableau,Pass
+Resume B (Samira Patel),Machine Learning Engineer,Machine Learning Engineer,Contains Python scikit-learn PyTorch Docker SQL C++,Pass
+Resume C (David Chen),NLP Engineer,NLP Engineer,Contains Python NLP Transformers Hugging Face spaCy NLTK,Pass
