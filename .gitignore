@@ -10,3 +10,6 @@ reports/*.pdf
 venv/
 .idea/
 .vscode/
+.DS_Store
+.DS_Store
+venv/

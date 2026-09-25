@@ -28,160 +28,394 @@ st.set_page_config(
 # Custom High-End Modern CSS
 st.markdown("""
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-    
-    html, body, [class*="css"] {
-        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+    :root {
+        --bg: #f4f7fb;
+        --surface: #ffffff;
+        --surface-2: #f8fafc;
+        --border: #e5eaf2;
+        --text: #111827;
+        --muted: #64748b;
+        --primary: #2563eb;
+        --primary-dark: #1d4ed8;
+        --primary-soft: #eff6ff;
+        --success: #16a34a;
+        --warning: #d97706;
+        --danger: #dc2626;
     }
-    
-    /* Main Background & Padding */
+
+    html, body, [class*="css"], .stApp {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        color: var(--text);
+    }
+
+    .stApp {
+        background:
+            radial-gradient(circle at 8% 0%, rgba(37,99,235,.08), transparent 28%),
+            radial-gradient(circle at 95% 12%, rgba(99,102,241,.07), transparent 25%),
+            var(--bg);
+    }
+
     .main .block-container {
-        padding-top: 1.8rem;
+        padding-top: 1.5rem;
         padding-bottom: 3rem;
-        max-width: 95%;
+        max-width: 96%;
     }
-    
-    /* Header Gradient & Card */
+
+    /* ---------- Sidebar ---------- */
+    section[data-testid="stSidebar"] {
+        background: linear-gradient(180deg, #0f172a 0%, #172554 100%);
+        border-right: 1px solid rgba(255,255,255,.08);
+    }
+
+    section[data-testid="stSidebar"] * {
+        color: #e5e7eb !important;
+    }
+
+    section[data-testid="stSidebar"] .stSelectbox label,
+    section[data-testid="stSidebar"] .stFileUploader label,
+    section[data-testid="stSidebar"] .stSlider label {
+        font-weight: 600 !important;
+        color: #f8fafc !important;
+    }
+
+    section[data-testid="stSidebar"] .stSelectbox > div > div,
+    section[data-testid="stSidebar"] .stFileUploader,
+    section[data-testid="stSidebar"] [data-testid="stAlert"] {
+        background: rgba(255,255,255,.08) !important;
+        border: 1px solid rgba(255,255,255,.12) !important;
+        border-radius: 12px !important;
+    }
+
+    section[data-testid="stSidebar"] hr {
+        border-color: rgba(255,255,255,.12) !important;
+    }
+
+    /* ---------- Hero ---------- */
     .hero-container {
-        background: linear-gradient(135deg, #1E3A8A 0%, #3B82F6 100%);
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 52%, #2563eb 100%);
         color: white;
-        padding: 1.8rem 2.2rem;
-        border-radius: 16px;
-        box-shadow: 0 10px 25px -5px rgba(30, 58, 138, 0.25);
-        margin-bottom: 1.8rem;
+        padding: 2.2rem 2.4rem;
+        border-radius: 22px;
+        box-shadow: 0 18px 45px rgba(15,23,42,.18);
+        margin-bottom: 1.6rem;
+        border: 1px solid rgba(255,255,255,.12);
     }
-    
+
+    .hero-container:after {
+        content: "";
+        position: absolute;
+        width: 280px;
+        height: 280px;
+        right: -90px;
+        top: -150px;
+        border-radius: 50%;
+        background: rgba(255,255,255,.08);
+    }
+
     .hero-title {
-        font-size: 2.3rem;
+        position: relative;
+        z-index: 2;
+        font-size: clamp(1.8rem, 3vw, 2.65rem);
         font-weight: 800;
         margin: 0;
-        letter-spacing: -0.02em;
+        letter-spacing: -0.035em;
     }
-    
+
     .hero-subtitle {
-        font-size: 1.05rem;
-        color: #E0E7FF;
-        margin-top: 0.4rem;
+        position: relative;
+        z-index: 2;
+        font-size: 1rem;
+        color: #dbeafe;
+        margin-top: .55rem;
         margin-bottom: 0;
-        font-weight: 400;
+        max-width: 850px;
+        line-height: 1.65;
     }
-    
-    /* Metric Cards */
+
+    /* ---------- Cards ---------- */
     .stat-card {
-        background: #FFFFFF;
-        border: 1px solid #E2E8F0;
-        border-radius: 12px;
-        padding: 1.2rem;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.03);
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        background: rgba(255,255,255,.94);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 1.25rem;
+        box-shadow: 0 8px 24px rgba(15,23,42,.06);
+        transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+        height: 100%;
     }
+
     .stat-card:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 12px rgba(0,0,0,0.06);
+        transform: translateY(-3px);
+        box-shadow: 0 14px 32px rgba(15,23,42,.10);
+        border-color: #bfdbfe;
     }
+
     .stat-label {
-        font-size: 0.85rem;
-        color: #64748B;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-    }
-    .stat-value {
-        font-size: 1.8rem;
+        font-size: .75rem;
+        color: var(--muted);
         font-weight: 700;
-        color: #0F172A;
-        margin-top: 0.3rem;
+        text-transform: uppercase;
+        letter-spacing: .075em;
     }
-    
-    /* Custom Skill Pill Badges */
+
+    .stat-value {
+        font-size: 1.75rem;
+        font-weight: 800;
+        color: var(--text);
+        margin-top: .35rem;
+    }
+
+    /* ---------- Streamlit containers ---------- */
+    div[data-testid="stVerticalBlockBorderWrapper"] {
+        border-radius: 16px !important;
+        border-color: var(--border) !important;
+        background: rgba(255,255,255,.72) !important;
+        box-shadow: 0 6px 20px rgba(15,23,42,.04);
+    }
+
+    /* ---------- Tabs ---------- */
+    .stTabs [data-baseweb="tab-list"] {
+        gap: 6px;
+        background: #e9eef6;
+        padding: 6px;
+        border-radius: 14px;
+        border: 1px solid #dde4ef;
+    }
+
+    .stTabs [data-baseweb="tab"] {
+        height: 44px;
+        font-size: .86rem;
+        font-weight: 700;
+        color: #64748b;
+        border-radius: 10px;
+        padding: 0 16px;
+        border: 0 !important;
+    }
+
+    .stTabs [aria-selected="true"] {
+        color: #1d4ed8 !important;
+        background: #ffffff !important;
+        box-shadow: 0 3px 10px rgba(15,23,42,.08);
+    }
+
+    /* ---------- Headings / body ---------- */
+    .stMarkdown, .stMarkdown p, .stMarkdown li,
+    [data-testid="stText"], [data-testid="stCaptionContainer"] {
+        color: var(--text);
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        color: #0f172a !important;
+        letter-spacing: -.02em;
+    }
+
+    .stCaption, [data-testid="stCaptionContainer"] {
+        color: #64748b !important;
+    }
+
+    /* ---------- Expanders: force readable dark text ---------- */
+    details[data-testid="stExpander"] {
+        background: #ffffff !important;
+        border: 1px solid #e2e8f0 !important;
+        border-radius: 14px !important;
+        margin-bottom: 10px !important;
+        box-shadow: 0 5px 16px rgba(15,23,42,.04);
+        overflow: hidden;
+    }
+
+    details[data-testid="stExpander"] summary {
+        color: #0f172a !important;
+        background: #ffffff !important;
+        font-weight: 700 !important;
+    }
+
+    details[data-testid="stExpander"] summary p,
+    details[data-testid="stExpander"] summary span,
+    details[data-testid="stExpander"] summary div {
+        color: #0f172a !important;
+    }
+
+    details[data-testid="stExpander"] > div {
+        background: #ffffff !important;
+        color: #111827 !important;
+    }
+
+    details[data-testid="stExpander"] .stMarkdown,
+    details[data-testid="stExpander"] .stMarkdown p,
+    details[data-testid="stExpander"] .stMarkdown li,
+    details[data-testid="stExpander"] .stMarkdown strong,
+    details[data-testid="stExpander"] [data-testid="stText"] {
+        color: #111827 !important;
+    }
+
+    /* ---------- Roadmap ---------- */
+    .roadmap-card {
+        background: linear-gradient(135deg, #ffffff 0%, #f8fbff 100%);
+        border: 1px solid #dbeafe;
+        border-left: 5px solid #2563eb;
+        border-radius: 15px;
+        padding: 1.25rem 1.35rem;
+        margin: .8rem 0 .55rem;
+        box-shadow: 0 7px 20px rgba(37,99,235,.07);
+    }
+
+    .roadmap-card h4 {
+        color: #1d4ed8 !important;
+    }
+
+    .roadmap-card p, .roadmap-card b {
+        color: #334155 !important;
+    }
+
+    /* ---------- Skill pills ---------- */
     .skill-pill {
         display: inline-flex;
         align-items: center;
-        background-color: #EFF6FF;
-        color: #1D4ED8;
-        border: 1px solid #BFDBFE;
-        padding: 5px 12px;
-        border-radius: 20px;
-        font-size: 0.88rem;
-        font-weight: 500;
-        margin: 3px 4px 4px 0px;
-        transition: all 0.2s ease;
+        background: #eff6ff;
+        color: #1d4ed8 !important;
+        border: 1px solid #bfdbfe;
+        padding: 6px 12px;
+        border-radius: 999px;
+        font-size: .84rem;
+        font-weight: 650;
+        margin: 3px 4px 4px 0;
+        transition: all .18s ease;
     }
+
     .skill-pill:hover {
-        background-color: #DBEAFE;
+        background: #dbeafe;
+        transform: translateY(-1px);
     }
-    
+
     .skill-pill-missing-req {
         display: inline-flex;
         align-items: center;
-        background-color: #FEF2F2;
-        color: #DC2626;
-        border: 1px solid #FCA5A5;
-        padding: 5px 12px;
-        border-radius: 20px;
-        font-size: 0.88rem;
-        font-weight: 600;
-        margin: 3px 4px 4px 0px;
+        background: #fef2f2;
+        color: #b91c1c !important;
+        border: 1px solid #fecaca;
+        padding: 6px 12px;
+        border-radius: 999px;
+        font-size: .84rem;
+        font-weight: 700;
+        margin: 3px 4px 4px 0;
     }
-    
+
     .skill-pill-missing-opt {
         display: inline-flex;
         align-items: center;
-        background-color: #FFFBEB;
-        color: #D97706;
-        border: 1px solid #FDE68A;
-        padding: 5px 12px;
-        border-radius: 20px;
-        font-size: 0.88rem;
-        font-weight: 500;
-        margin: 3px 4px 4px 0px;
-    }
-    
-    /* Category Badges */
-    .cat-header {
-        font-size: 0.95rem;
-        font-weight: 700;
-        color: #334155;
-        margin-top: 1rem;
-        margin-bottom: 0.4rem;
-        display: flex;
-        align-items: center;
-        gap: 6px;
-    }
-    
-    /* Roadmap Week Card */
-    .roadmap-card {
-        background: #F8FAFC;
-        border-left: 4px solid #3B82F6;
-        border-radius: 8px;
-        padding: 1.2rem;
-        margin-bottom: 1rem;
-    }
-    
-    /* Tabs Styling */
-    .stTabs [data-baseweb="tab-list"] {
-        gap: 12px;
-        border-bottom: 2px solid #E2E8F0;
-    }
-    
-    .stTabs [data-baseweb="tab"] {
-        height: 48px;
-        font-size: 0.95rem;
-        font-weight: 600;
-        color: #64748B;
-        border-radius: 8px 8px 0 0;
-        padding: 0 20px;
-    }
-    
-    .stTabs [aria-selected="true"] {
-        color: #1E3A8A !important;
-        border-bottom: 3px solid #1E3A8A !important;
-        background-color: #F1F5F9;
+        background: #fffbeb;
+        color: #b45309 !important;
+        border: 1px solid #fde68a;
+        padding: 6px 12px;
+        border-radius: 999px;
+        font-size: .84rem;
+        font-weight: 650;
+        margin: 3px 4px 4px 0;
     }
 
-    .stDataFrame {
-        border: 1px solid #E2E8F0;
-        border-radius: 8px;
+    .cat-header {
+        font-size: .95rem;
+        font-weight: 750;
+        color: #1e293b !important;
+        margin-top: 1rem;
+        margin-bottom: .45rem;
+        display: flex;
+        align-items: center;
+        gap: 7px;
+    }
+
+    /* ---------- Inputs ---------- */
+    .stTextInput input, .stTextArea textarea,
+    .stSelectbox [data-baseweb="select"],
+    .stNumberInput input {
+        border-radius: 10px !important;
+    }
+
+    /* ---------- Buttons ---------- */
+    .stButton > button, .stDownloadButton > button {
+        border-radius: 11px !important;
+        font-weight: 700 !important;
+        border: 1px solid #dbe3ef !important;
+        min-height: 42px;
+        transition: all .18s ease !important;
+    }
+
+    .stButton > button:hover, .stDownloadButton > button:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 7px 16px rgba(37,99,235,.14);
+        border-color: #93c5fd !important;
+    }
+
+    /* ---------- Alerts ---------- */
+    div[data-testid="stAlert"] {
+        border-radius: 12px !important;
+        border-width: 1px !important;
+    }
+
+    /* ---------- Metrics ---------- */
+    [data-testid="stMetric"] {
+        background: #ffffff;
+        border: 1px solid var(--border);
+        border-radius: 13px;
+        padding: 12px 14px;
+        box-shadow: 0 4px 14px rgba(15,23,42,.04);
+    }
+
+    [data-testid="stMetricLabel"] {
+        color: #64748b !important;
+        font-weight: 650 !important;
+    }
+
+    [data-testid="stMetricValue"] {
+        color: #0f172a !important;
+        font-weight: 800 !important;
+    }
+
+    /* ---------- Dataframes ---------- */
+    div[data-testid="stDataFrame"] {
+        border: 1px solid #e2e8f0 !important;
+        border-radius: 13px !important;
+        overflow: hidden;
+        box-shadow: 0 5px 18px rgba(15,23,42,.04);
+    }
+
+    /* ---------- File uploader ---------- */
+    [data-testid="stFileUploader"] section {
+        border-radius: 13px !important;
+        border: 1px dashed #94a3b8 !important;
+        background: #f8fafc !important;
+    }
+
+    /* ---------- Checkbox ---------- */
+    .stCheckbox label p {
+        color: #334155 !important;
+        font-weight: 500;
+    }
+
+    /* ---------- Mobile ---------- */
+    @media (max-width: 900px) {
+        .main .block-container {
+            max-width: 100%;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+        .hero-container {
+            padding: 1.5rem;
+            border-radius: 16px;
+        }
+
+        .hero-title {
+            font-size: 1.7rem;
+        }
+
+        .stTabs [data-baseweb="tab"] {
+            padding: 0 9px;
+            font-size: .76rem;
+        }
     }
 </style>
 """, unsafe_allow_html=True)
